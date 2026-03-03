@@ -1,0 +1,19 @@
+[capture] Script started
+[capture] ORBBEC_USD=/home/fmc3/Documents/workspace1/scene_bottle/usds/objects/orbbec_gemini_335L.usd
+[capture] headless=True
+[capture] skip_orbbec_model=True
+[capture] scene_usd=/home/fmc3/Documents/workspace1/scene_bottle/usds/objects/Office/office.usd
+[capture] Scene referenced
+[capture] Warmup done: 200 frames
+[capture] Detected cameras:
+  - /World/Scene/Camera
+  - /World/Scene/Camera_2
+  - /OmniverseKit_Persp
+  - /OmniverseKit_Front
+  - /OmniverseKit_Top
+  - /OmniverseKit_Right
+[capture] Using camera: /World/Scene/Camera
+[capture] Replicator path failed: AttributeError("'HydraTexture' object has no attribute 'split'")
+[capture] Applied post process: exposure=1.6, gamma=0.9
+[capture] Saved RGB image -> /home/fmc3/Documents/workspace1/scene_bottle/outputs/rgb/office_scene_camera.png
+[capture] Closing app

@@ -1,0 +1,5 @@
+Best camera pose from sweep_subproc
+score: 0.2226
+image: /home/fmc3/Documents/workspace1/scene_bottle/outputs/rgb/sweep_subproc/20260303_183141/sample_002.png
+translation: 0.941231,-0.991347,0.137537
+orientation: 1.000000,0.000000,0.000000,0.000000

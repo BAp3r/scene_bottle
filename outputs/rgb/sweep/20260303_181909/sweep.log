@@ -1,0 +1,11 @@
+[sweep] scene=/home/fmc3/Documents/workspace1/scene_bottle/usds/objects/Office/office.usd
+[sweep] camera=/World/Orbbec/camera_rgb/Camera_rgb
+[sweep] samples=6, warmup=180, settle=20
+[sweep] base pose T=(0.0, 0.0, 0.08), Q=(1.0, 0.0, 0.0, 0.0)
+[sweep] sample 000: invalid frame
+[sweep] sample 001: invalid frame
+[sweep] sample 002: invalid frame
+[sweep] sample 003: invalid frame
+[sweep] sample 004: invalid frame
+[sweep] sample 005: invalid frame
+[sweep] ERROR: RuntimeError('No valid samples captured')\n
