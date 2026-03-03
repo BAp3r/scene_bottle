@@ -74,3 +74,14 @@
 1. **排查动态刚体报错**: 针对在控制台反复出现的 `triangle mesh collision ... cannot be a part of a dynamic body` 警告进行了分析。
 2. **确认不影响 RL 训练**: 虽然原始 `SM_BottleA.usd` 内部带有了强制的 Triangle 属性，我们用 Python 覆盖 `physxCollision:approximation` 也无法完全根除其初始时刻的警告文本，但是由于 PhysX 的保护机制，它已经成功被底层的自动 Fallback 转换成了轻量、合法的 `convexHull`（凸包体）。
 3. **结论**: 记录进 `learned.md`，这个红字仅仅是一个提醒，绝不会干扰任何物理碰撞表现和后端抓取控制，可以直接无视。我们的初始环境搭建工作全部宣告竣工。
+
+## 阶段六：从 Isaac Sim 原生 USD 转向 IsaacLab ML 环境架构
+**时间**: 2026-03-03
+**状态**: ✅ 完成
+**工作内容**:
+1. **跑通首个官方 Teleop**: 成功在本地使用 `./isaaclab.sh -p scripts/environments/teleoperation/teleop_se3_agent.py` 运行了 Franka 机器人的逆运动学（IK）遥操作控制，这证明 IsaacLab 基础通信、基于手柄/键盘的交互逻辑已完全跑通。
+2. **解决环境注入报错**: 诊断了直接使用 `conda activate env_isaaclab && python` 遇到 `ModuleNotFoundError: No module named 'omni'` 的原因。明确后续所有带有 Omniverse 和 IsaacLab 依赖的脚本，**必须通过** `./isaaclab.sh -p <script.py>` 这个启动器来执行，让其加载底层的 Python path 环境变量。
+3. **制定 GR2 自定义环境接入计划**: 确立了接下来的三大代码编写步骤：
+   * **Step 1**: 编写 `gr2_asset.py`，配置 GR2 的 `ArticulationCfg` (关节匹配与驱动器 PD 参数)。
+   * **Step 2**: 编写 `gr2_env_cfg.py`，配置 `InteractiveSceneCfg` (定义桌面、瓶子以及挂载末端差分逆运动学 `DifferentialIKControllerCfg`)。
+   * **Step 3**: 编写 `teleop_gr2.py`，通过模仿 Franka Demo 实现针对 GR2 手臂位姿和灵巧手的 HDF5 数据收集，为后续模仿学习(IL)打下根基。

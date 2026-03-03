@@ -76,3 +76,12 @@
 **行动建议**：
 1. 确认 IsaacLab 是否已经在你的 `env_isaaclab` 环境下安装好，并且能成功 import（如 `import omni.isaac.lab`）。
 2. 在 `scene_bottle` 下建一个新脚本 `gr2_env_cfg.py` 去定义 GR2 机器人的 Articulation 配置和 桌子瓶子的 RigidObject 配置。你会希望我先写哪一部分？
+---
+
+### 2026-03-03 更新：当前进度与执行方案
+1. **当前状态**：官方 Franka 的 teleop 遥操作已在本地完全跑通。我们明确了 IsaacLab `omni` 包的导入必须依赖 `./isaaclab.sh -p`。
+2. **马上要写的代码**：我们将暂时搁置深挖底层的 Mimic 算法逻辑。当务之急是把 GR2 从独立的 USD 变成一个 **符合 IsaacLab 规范的任务环境 (Task Registry)**。
+3. **下一步执行计划**：
+   - 创建 `gr2_asset.py`，对接 GR2 的关节驱动 (ArticulationCfg)。
+   - 创建 `gr2_env_cfg.py`，拼凑桌子、瓶子与 GR2，挂载 IK 控制器 (InteractiveSceneCfg)。
+   - 创建自定义 `teleop_gr2.py` 进行遥操作录制 (HDF5 数据集)。
